@@ -87,7 +87,7 @@ export function Hero() {
             </div>
         </div>
 
-        <p className="max-w-xl text-sm leading-relaxed text-secondary sm:text-base">
+        <p className="max-w-2xl text-sm leading-relaxed text-secondary sm:text-base">
           {heroConfig.bio}
         </p>
 
