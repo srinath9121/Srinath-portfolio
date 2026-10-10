@@ -28,9 +28,9 @@ export default function ResumePage() {
 
           <div className="flex flex-wrap gap-2">
             <Link
-              href={hasExternalResume ? resumeConfig.viewUrl : `mailto:${heroConfig.email}`}
-              target={hasExternalResume ? "_blank" : undefined}
-              rel={hasExternalResume ? "noopener noreferrer" : undefined}
+              href={hasExternalResume ? resumeConfig.viewUrl : `https://mail.google.com/mail/?view=cm&fs=1&to=${heroConfig.email}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
             >
               {hasExternalResume ? "Open PDF" : "Contact for Resume"}
@@ -71,7 +71,16 @@ export default function ResumePage() {
                 Resume preview will be updated soon.
               </p>
               <p className="mt-2 max-w-md text-sm text-secondary">
-                Please contact via email for research background and technical documentation.
+                Please contact via{" "}
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${heroConfig.email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-primary"
+                >
+                  {heroConfig.email}
+                </a>{" "}
+                for research background and technical documentation.
               </p>
             </div>
           )}

@@ -15,7 +15,7 @@ const footerSocial = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/srinath-swamy-b41a9b267", icon: LinkedinLogo },
   { name: "X", href: "https://x.com/swamy_srin65891", icon: XLogo },
   { name: "Instagram", href: "https://www.instagram.com/srinathhh_____/", icon: InstagramLogo },
-  { name: "Email", href: "mailto:msrinath9700@gmail.com", icon: EnvelopeSimple },
+  { name: "Email", href: "https://mail.google.com/mail/?view=cm&fs=1&to=msrinath9700@gmail.com", icon: EnvelopeSimple },
 ];
 
 export function SiteFooter() {

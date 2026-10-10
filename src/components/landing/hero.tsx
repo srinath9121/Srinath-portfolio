@@ -78,7 +78,9 @@ export function Hero() {
                 Book a call
               </Link>
               <Link
-                href={`mailto:${heroConfig.email}`}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${heroConfig.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-muted sm:text-sm"
               >
                 <EnvelopeSimple className="size-3.5 sm:size-4" weight="bold" />

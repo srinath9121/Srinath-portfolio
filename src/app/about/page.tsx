@@ -134,7 +134,16 @@ export default function AboutPage() {
           <h2 className="text-xl font-bold tracking-tight">Let&apos;s connect</h2>
           <p className="text-sm leading-relaxed text-secondary sm:text-base">
             Whether you want to collaborate, talk about AI, or just say hi — I&apos;d love to
-            hear from you.
+            hear from you. You can reach me directly at{" "}
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=msrinath9700@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-primary"
+            >
+              msrinath9700@gmail.com
+            </a>
+            .
           </p>
           <div className="flex flex-wrap gap-2 pt-1">
             {aboutConfig.connectLinks.map((link) => {
