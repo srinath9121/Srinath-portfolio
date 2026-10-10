@@ -1,0 +1,82 @@
+import Link from "next/link";
+import { ArrowSquareOut, DownloadSimple } from "@phosphor-icons/react/dist/ssr";
+import { Container } from "@/components/container";
+import { LiquidGlassCard } from "@/components/ui/liquid-glass";
+import { heroConfig } from "@/config/hero";
+import { siteConfig } from "@/config/meta";
+import { resumeConfig } from "@/config/resume";
+import { createPageMetadata, pageTitle } from "@/lib/metadata";
+
+export const metadata = createPageMetadata({
+  title: pageTitle("Resume"),
+  description: resumeConfig.description,
+  path: "/resume",
+});
+
+export default function ResumePage() {
+  const hasExternalResume =
+    Boolean(resumeConfig.viewUrl) && resumeConfig.viewUrl !== "#";
+
+  return (
+    <div className="space-y-8 pb-16 pt-8">
+      <Container>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">{resumeConfig.title}</h1>
+            <p className="mt-3 max-w-xl text-secondary">{resumeConfig.description}</p>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href={hasExternalResume ? resumeConfig.viewUrl : `mailto:${heroConfig.email}`}
+              target={hasExternalResume ? "_blank" : undefined}
+              rel={hasExternalResume ? "noopener noreferrer" : undefined}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
+            >
+              {hasExternalResume ? "Open PDF" : "Contact for Resume"}
+              <ArrowSquareOut className="size-4" />
+            </Link>
+            {hasExternalResume && (
+              <Link
+                href={resumeConfig.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
+              >
+                Download
+                <DownloadSimple className="size-4" />
+              </Link>
+            )}
+          </div>
+        </div>
+      </Container>
+
+      <Container>
+        <LiquidGlassCard
+          glowIntensity="sm"
+          shadowIntensity="md"
+          borderRadius="18px"
+          blurIntensity="md"
+        >
+          {resumeConfig.embedUrl ? (
+            <iframe
+              src={resumeConfig.embedUrl}
+              title={`${siteConfig.name} resume`}
+              className="aspect-[3/4] w-full min-h-[70vh] bg-muted sm:aspect-auto sm:min-h-[80vh]"
+              allow="autoplay"
+            />
+          ) : (
+            <div className="flex min-h-[40vh] flex-col items-center justify-center p-8 text-center sm:min-h-[50vh]">
+              <p className="text-lg font-medium text-foreground">
+                Resume preview will be updated soon.
+              </p>
+              <p className="mt-2 max-w-md text-sm text-secondary">
+                Please contact via email for research background and technical documentation.
+              </p>
+            </div>
+          )}
+        </LiquidGlassCard>
+      </Container>
+    </div>
+  );
+}

@@ -1,0 +1,97 @@
+---
+title: "Solar PV Ramp Detection"
+description: "Multimodal deep learning for early warning of severe solar power ramp events using fisheye sky-camera images and photovoltaic (PV) time series."
+date: "2026"
+tech: [
+  "Python",
+  "PyTorch",
+  "torchvision / ResNet-18",
+  "LSTM",
+  "NumPy",
+  "pandas",
+  "scikit-learn",
+  "Hugging Face Datasets",
+  "Hugging Face Hub",
+  "Gradio"
+]
+---
+
+## Overview
+
+Rapidly moving cloud formations cause sudden, steep drops in solar photovoltaic generation—known as solar power ramp events. Advance detection of severe generation drops is critical for enabling power system operators to prepare balancing reserves and ramp up compensatory generation before sudden deficits occur.
+
+**Solar PV Ramp Detection** is a multimodal deep learning research system developed to provide early warning of upcoming ramp events by jointly modeling:
+1. **PV output forecasting:** Normalized power generation 10 minutes into the future ($t + 10$ minutes).
+2. **Ramp severity classification:** Categorization of the upcoming event into **No-Ramp**, **Moderate**, or **Severe**.
+
+*Note: This project represents experimental research evaluated on chronological held-out test splits. It has not been deployed in an active utility grid or validated under live operational transmission conditions.*
+
+---
+
+## Technical Approach
+
+The architecture combines computer vision and temporal sequence modeling to capture both spatial cloud dynamics and historical power trends.
+
+```
+Fisheye Sky Image (64×64 RGB)  ──► ResNet-18 CNN (Vision)  ──┐
+                                                             ├──► Concatenation ──► Fusion Layer (256, ReLU) ──┬──► Regression Head (PV at t+10)
+Historical PV Sequence (10×1)   ──► 1-Layer LSTM (Temporal) ──┘                                                 └──► Classification Head (Ramp Severity)
+```
+
+### Multimodal Architecture
+- **Vision Branch:** A ResNet-18 convolutional neural network processes 64 × 64 RGB fisheye sky-camera images to extract spatial cloud coverage, optical thickness, and motion features.
+- **Temporal Branch:** A single-layer Long Short-Term Memory (LSTM) network with 64 hidden units processes the preceding 10 PV generation readings sampled at 10-minute intervals.
+- **Feature Fusion:** The image feature vector and temporal hidden state are concatenated and passed through a shared 256-unit dense fusion layer with ReLU activation.
+- **Regression Head:** A linear head predicts continuous normalized PV generation at $t + 10$ minutes.
+- **Classification Head:** A linear head outputs class probabilities across three ramp severity categories.
+
+### Ramp Severity Definitions
+Ramp events are categorized according to documented relative generation drop thresholds:
+- **No-Ramp:** Photovoltaic drop below 5%.
+- **Moderate:** Photovoltaic drop from 5% to below 15%.
+- **Severe:** Photovoltaic drop of at least 15%.
+
+### Experimental Training Variants
+Two experimental configurations were implemented and evaluated:
+- **V1 — Baseline:** Randomly initialized ResNet-18 backbone, standard cross-entropy loss for classification, and mean squared error (MSE) loss for regression.
+- **V2 — Safety-First:** ImageNet-pretrained ResNet-18 backbone, class-balanced classification loss with targeted upweighting for the safety-critical Severe class, regression loss, and an explicit physics-boundary penalty to enforce generation bounds. V2 incorporates a `ReduceLROnPlateau` learning rate scheduler.
+
+*(The model is strictly a CNN-LSTM multimodal deep learning architecture and does not incorporate transformer, LLM, or attention mechanisms.)*
+
+---
+
+## Results & Evaluation
+
+The experimental results demonstrate a marked improvement in detecting safety-critical generation drops with the V2 safety-first configuration:
+
+| Metric | V1 — Baseline | V2 — Safety-First |
+| :--- | :---: | :---: |
+| **Severe-Ramp Recall** | **47.7%** | **80.5%** |
+| **PV Forecast Regression $R^2$** | *Not reported* | **0.950** |
+
+The safety-first objective function increased severe-ramp recall from **47.7% to 80.5%**, significantly reducing false negatives on critical drops where grid reliability is most vulnerable.
+
+*Evaluation qualification: These metrics reflect performance exclusively on the project's chronological held-out test split. They do not demonstrate performance at alternative geographic installations, under different camera setups, or in production grid operations.*
+
+---
+
+## Dataset & Evaluation Methodology
+
+- **Dataset:** SKIPPD (Sky Image Processing for Photovoltaic Power Forecasting).
+- **Dataset Source:** Hosted on Hugging Face at [srikanthswamym/skippd](https://huggingface.co/datasets/srikanthswamym/skippd).
+- **Data Volume:** The experiment utilizes the first 180,000 chronological observations.
+- **Split Strategy:** Strict chronological partition without shuffling:
+  - **80%** Training
+  - **10%** Validation
+  - **10%** Testing
+- **Generalization:** Evaluated strictly on the chronological held-out test set to test forward-in-time predictive validity without data leakage from temporal interpolation.
+
+*The dataset is accessed from its external repository and is not bundled with this code base. No claim of external multi-site validation is made.*
+
+---
+
+## Interactive Demo & Links
+
+- **Live Demo:** [Hugging Face Spaces](https://huggingface.co/spaces/srinath44/solar-ramp-detector)
+- **Dataset:** [Hugging Face Datasets](https://huggingface.co/datasets/srikanthswamym/skippd)
+- **Source Repository:** [GitHub](https://github.com/srinath9121/solar-pv-ramp-detection)
