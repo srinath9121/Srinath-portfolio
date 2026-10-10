@@ -2,7 +2,7 @@
 
 Personal portfolio for **M Srinath Swamy** — Data Science student focused on AI/ML engineering, research, and practical technical systems. Built with Next.js 15, TypeScript, Tailwind CSS v4, and MDX.
 
-![Portfolio preview](./public/assets/readme-preview.png)
+![Portfolio preview](./public/assets/portfolio-preview.png)
 
 **Site:** [nathos.dev](https://nathos.dev) · **GitHub:** [@srinath9121](https://github.com/srinath9121)
 
