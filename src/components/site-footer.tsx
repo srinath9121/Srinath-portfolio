@@ -28,7 +28,7 @@ export function SiteFooter() {
         </div>
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
-          <GitHubButton />
+          <GitHubButton href={siteConfig.repoUrl} />
 
           <div className="flex items-center gap-2">
             {footerSocial.map((link) => {
