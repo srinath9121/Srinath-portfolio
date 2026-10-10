@@ -4,7 +4,7 @@ Personal portfolio for **M Srinath Swamy** — Data Science student focused on A
 
 ![Portfolio preview](./public/assets/portfolio-preview.png)
 
-**Site:** [nathos.dev](https://srinath-portfolio-five.vercel.app/) · **GitHub:** [@srinath9121](https://github.com/srinath9121) · **Email:** [msrinath9700@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=msrinath9700@gmail.com)
+**Site:** [nathos.dev](https://srinath-portfolio-five.vercel.app/) · **GitHub:** [@srinath9121](https://github.com/srinath9121) · **Email:** [msrinath9700@gmail.com](mailto:msrinath9700@gmail.com)
 
 ---
 

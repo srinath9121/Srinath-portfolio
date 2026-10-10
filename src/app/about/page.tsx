@@ -136,9 +136,7 @@ export default function AboutPage() {
             Whether you want to collaborate, talk about AI, or just say hi — I&apos;d love to
             hear from you. You can reach me directly at{" "}
             <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=msrinath9700@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:msrinath9700@gmail.com"
               className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-primary"
             >
               msrinath9700@gmail.com

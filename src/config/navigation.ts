@@ -31,5 +31,5 @@ export const commandItems = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/srinath-swamy-b41a9b267", external: true },
   { label: "X", href: "https://x.com/swamy_srin65891", external: true },
   { label: "Instagram", href: "https://www.instagram.com/srinathhh_____/", external: true },
-  { label: "Email", href: "https://mail.google.com/mail/?view=cm&fs=1&to=msrinath9700@gmail.com", external: true },
+  { label: "Email", href: "mailto:msrinath9700@gmail.com", external: true },
 ];
