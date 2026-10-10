@@ -87,7 +87,7 @@ export function Hero() {
             </div>
         </div>
 
-        <p className="max-w-2xl text-sm leading-relaxed text-secondary sm:text-base">
+        <p className="max-w-none text-sm leading-relaxed text-secondary sm:text-[14.5px] sm:tracking-[-0.005em] md:whitespace-nowrap">
           {heroConfig.bio}
         </p>
 
