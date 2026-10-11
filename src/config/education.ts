@@ -1,8 +1,9 @@
 export const education = [
   {
-    school: "University",
-    degree: "Bachelor of Science · Data Science & AI/ML",
+    school: "Bhavan's Vivekananda College",
+    degree: "Bachelor of Science Honours · Data Science",
     period: "Undergraduate",
+    url: "https://bhavansvc.ac.in/",
   },
 ];
 

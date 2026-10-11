@@ -3,13 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  CalendarBlank,
   EnvelopeSimple,
   FileText,
   GithubLogo,
   InstagramLogo,
   LinkedinLogo,
   MediumLogo,
+  Phone,
   SealCheck,
   XLogo,
 } from "@phosphor-icons/react";
@@ -70,12 +70,10 @@ export function Hero() {
             <div className="mt-3 flex flex-wrap items-center gap-2">
               <Link
                 href={heroConfig.calendarUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-3.5 py-1.5 text-xs font-medium text-background transition-opacity hover:opacity-90 sm:text-sm"
               >
-                <CalendarBlank className="size-3.5 sm:size-4" weight="bold" />
-                Book a call
+                <Phone className="size-3.5 sm:size-4" weight="bold" />
+                Call me
               </Link>
               <Link
                 href={`mailto:${heroConfig.email}`}

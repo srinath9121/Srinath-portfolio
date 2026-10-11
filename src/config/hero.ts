@@ -1,7 +1,8 @@
 export const heroConfig = {
   name: "M Srinath Swamy",
   email: "msrinath9700@gmail.com",
-  calendarUrl: "#",
+  phone: "+91 8712327124",
+  calendarUrl: "tel:+918712327124",
   bio: "Data Science student focused on AI/ML engineering, research, and practical technical systems.",
   avatar: "/assets/avatar.svg",
   avatarSmile: "/assets/avatar-smile.svg",
