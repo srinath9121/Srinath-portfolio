@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowSquareOut, DownloadSimple } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/container";
 import { LiquidGlassCard } from "@/components/ui/liquid-glass";
+import { ResumeView } from "@/components/resume-view";
 import { heroConfig } from "@/config/hero";
 import { siteConfig } from "@/config/meta";
 import { resumeConfig } from "@/config/resume";
@@ -33,7 +34,7 @@ export default function ResumePage() {
               rel={hasExternalResume ? "noopener noreferrer" : undefined}
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
             >
-              {hasExternalResume ? "Open PDF" : "Contact for Resume"}
+              {hasExternalResume ? "Open PDF" : "Contact for Official PDF"}
               <ArrowSquareOut className="size-4" />
             </Link>
             {hasExternalResume && (
@@ -57,6 +58,7 @@ export default function ResumePage() {
           shadowIntensity="md"
           borderRadius="18px"
           blurIntensity="md"
+          className="p-6 sm:p-10"
         >
           {resumeConfig.embedUrl ? (
             <iframe
@@ -66,21 +68,7 @@ export default function ResumePage() {
               allow="autoplay"
             />
           ) : (
-            <div className="flex min-h-[40vh] flex-col items-center justify-center p-8 text-center sm:min-h-[50vh]">
-              <p className="text-lg font-medium text-foreground">
-                Resume preview will be updated soon.
-              </p>
-              <p className="mt-2 max-w-md text-sm text-secondary">
-                Please contact via{" "}
-                <a
-                  href={`mailto:${heroConfig.email}`}
-                  className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-primary"
-                >
-                  {heroConfig.email}
-                </a>{" "}
-                for research background and technical documentation.
-              </p>
-            </div>
+            <ResumeView />
           )}
         </LiquidGlassCard>
       </Container>

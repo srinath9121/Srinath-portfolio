@@ -8,6 +8,7 @@ export const heroConfig = {
   avatarSmile: "/assets/avatar-smile.svg",
   timezone: "Asia/Kolkata",
   location: "India",
+  coordinates: "17.519044, 78.440465",
 };
 
 export const socialLinks = [

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { Container } from "@/components/container";
 import { achievements, type Achievement } from "@/config/achievements";
 import { experience, type ExperienceItem } from "@/config/experience";
@@ -30,19 +29,6 @@ type FeaturedItem =
       href: string;
     };
 
-const techIcons: Record<string, string> = {
-  "Data Pipelines": "apacheairflow",
-  "Feature Engineering": "scikitlearn",
-  IoT: "arduino",
-  "Machine Learning": "tensorflow",
-  Nextjs: "nextdotjs",
-  "Next.js": "nextdotjs",
-  PostgreSQL: "postgresql",
-  Python: "python",
-  React: "react",
-  TypeScript: "typescript",
-};
-
 const achievementTech: Record<string, string[]> = {
   "sih-2025": ["Python", "React", "TypeScript", "Machine Learning"],
   "sih-2024": ["Next.js", "React", "TypeScript", "PostgreSQL"],
@@ -55,10 +41,10 @@ function experienceToFeatured(item: ExperienceItem): FeaturedItem {
     subtitle: item.role,
     period: item.periodLong,
     location: item.locationLong.trim(),
-    image: "/assets/Valency-Energy-Logo.jpeg",
+    image: item.image || "/assets/experience/unp-education.png",
     details: item.details ?? [],
     tech: item.tech ?? [],
-    href: "/work",
+    href: item.href || "#",
   };
 }
 
@@ -76,24 +62,6 @@ function achievementToFeatured(item: Achievement): FeaturedItem {
   };
 }
 
-function TechPill({ name }: { name: string }) {
-  const icon = techIcons[name] ?? name.toLowerCase().replaceAll(" ", "");
-
-  return (
-    <span className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background/70 px-3 py-1.5 text-sm font-semibold text-foreground shadow-sm">
-      <Image
-        src={`https://cdn.simpleicons.org/${icon}`}
-        alt=""
-        width={16}
-        height={16}
-        className="size-4 shrink-0"
-        unoptimized
-      />
-      {name}
-    </span>
-  );
-}
-
 function FeaturedExperienceItem({
   item,
   delay,
@@ -103,63 +71,62 @@ function FeaturedExperienceItem({
 }) {
   return (
     <article
-      className="animate-in-up-on-view py-7"
+      className="animate-in-up-on-view rounded-2xl border border-border/80 bg-card/40 p-6 sm:p-7 shadow-xs"
       style={{ animationDelay: `${delay}s` }}
     >
-      <div className="grid gap-4 sm:grid-cols-[88px_minmax(0,1fr)_auto] sm:items-start">
-        <Link
-          href={item.href}
-          className="relative size-16 overflow-hidden rounded-xl bg-muted shadow-sm transition-transform hover:scale-[1.02]"
-        >
-          <Image
-            src={item.image}
-            alt=""
-            fill
-            sizes="64px"
-            className="object-cover"
-          />
-        </Link>
-
-        <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2.5">
-            <Link
-              href={item.href}
-              className="text-2xl font-bold tracking-tight text-foreground transition-colors hover:text-secondary"
-            >
-              {item.title}
-            </Link>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex items-center gap-4">
+          <div className="relative flex h-14 w-28 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-white p-2 shadow-xs dark:bg-white">
+            <Image
+              src={item.image}
+              alt="UNP Education logo"
+              fill
+              sizes="112px"
+              className="object-contain p-1"
+              priority
+            />
           </div>
-          <p className="mt-1 text-xl text-foreground">{item.subtitle}</p>
+
+          <div className="min-w-0">
+            <h3 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+              {item.title}
+            </h3>
+            <p className="text-sm font-medium text-secondary sm:text-base">
+              {item.subtitle}
+            </p>
+          </div>
         </div>
 
-        <div className="text-left text-base text-secondary sm:min-w-[190px] sm:text-right sm:text-lg">
-          <p>{item.period}</p>
-          <p className="mt-1">{item.location}</p>
+        <div className="text-left font-mono text-xs text-secondary sm:min-w-[160px] sm:text-right sm:text-sm">
+          <p className="font-semibold text-foreground">{item.period}</p>
+          <p className="mt-0.5 text-muted-foreground">{item.location}</p>
         </div>
       </div>
 
-      {item.tech.length > 0 && (
-        <div className="mt-8">
-          <h3 className="text-xl font-bold tracking-tight text-foreground">
-            Technologies
-          </h3>
-          <div className="mt-4 flex flex-wrap gap-3">
-            {item.tech.map((tech) => (
-              <TechPill key={`${item.title}-${tech}`} name={tech} />
-            ))}
-          </div>
+      {item.details.length > 0 && (
+        <div className="mt-5 space-y-2 text-sm leading-relaxed text-secondary sm:text-[14.5px]">
+          {item.details.map((detail) => (
+            <p key={detail}>{detail}</p>
+          ))}
         </div>
       )}
 
-      {item.details.length > 0 && (
-        <ul className="mt-6 space-y-2 text-lg leading-relaxed text-secondary">
-          {item.details.map((detail) => (
-            <li key={detail} className="flex gap-2">
-              <span className="mt-[0.65em] size-1.5 shrink-0 bg-secondary/70" />
-              <span>{detail}</span>
-            </li>
-          ))}
-        </ul>
+      {item.tech.length > 0 && (
+        <div className="mt-6">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Technologies
+          </p>
+          <div className="mt-2.5 flex flex-wrap gap-2">
+            {item.tech.map((tech) => (
+              <span
+                key={tech}
+                className="inline-flex items-center rounded-md border border-border/80 bg-background/80 px-2.5 py-1 font-mono text-xs text-foreground shadow-2xs"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
       )}
     </article>
   );
@@ -176,36 +143,34 @@ export function FeaturedExperienceSection() {
   }
 
   return (
-    <Container>
-      <div className="mb-8">
-        <p className="text-sm text-secondary">Featured</p>
-        <h2 className="mt-1 text-3xl font-bold tracking-tight text-foreground">
-          Experience
-        </h2>
-      </div>
+    <section aria-labelledby="featured-experience-heading" className="w-full">
+      <Container>
+        <div className="mb-6">
+          <p className="font-mono text-xs uppercase tracking-widest text-primary/80">
+            Career & Research
+          </p>
+          <h2
+            id="featured-experience-heading"
+            className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
+          >
+            Featured Experience
+          </h2>
+        </div>
 
-      <div className="space-y-6">
-        {featuredItems.map((item, index) => {
-          const itemId = `${item.type}-${item.title}`;
+        <div className="space-y-6">
+          {featuredItems.map((item, index) => {
+            const itemId = `${item.type}-${item.title}`;
 
-          return (
-            <FeaturedExperienceItem
-              key={itemId}
-              item={item}
-              delay={0.08 + index * 0.08}
-            />
-          );
-        })}
-      </div>
-
-      <div className="mt-10 flex justify-center">
-        <Link
-          href="/work"
-          className="rounded-lg border border-border bg-card px-5 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-muted"
-        >
-          Show all work experiences
-        </Link>
-      </div>
-    </Container>
+            return (
+              <FeaturedExperienceItem
+                key={itemId}
+                item={item}
+                delay={0.08 + index * 0.08}
+              />
+            );
+          })}
+        </div>
+      </Container>
+    </section>
   );
 }

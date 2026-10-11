@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Compass } from "@phosphor-icons/react";
 import { heroConfig } from "@/config/hero";
 import { cn } from "@/lib/utils";
 
@@ -54,7 +55,7 @@ export function TimezoneWidget({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "min-w-0 text-right text-xs text-secondary",
+        "flex flex-col items-end min-w-0 text-right text-xs text-secondary",
         className,
       )}
     >
@@ -75,6 +76,20 @@ export function TimezoneWidget({ className }: { className?: string }) {
             <span className="font-semibold text-foreground">{myTime}</span>
           </p>
         </div>
+      )}
+
+      {heroConfig.coordinates && (
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(heroConfig.coordinates.replace(/\s+/g, ""))}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-1.5 inline-flex items-center gap-1.5 rounded-md border border-border/60 bg-muted/30 px-2 py-0.5 font-mono text-[11px] text-muted-foreground transition-all hover:border-primary/40 hover:bg-muted/80 hover:text-foreground cursor-pointer"
+          title="Open exact coordinates in Google Maps"
+        >
+          <Compass className="size-3.5 shrink-0 text-primary animate-pulse" weight="fill" />
+          <span>{heroConfig.coordinates}</span>
+          <span className="text-[10px] text-primary">↗</span>
+        </a>
       )}
     </div>
   );

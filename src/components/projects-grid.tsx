@@ -52,15 +52,15 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
             >
               {project.title}
             </Link>
-            {project.demoUrl && (
+            {project.datasetUrl && (
               <div className="mt-1">
                 <a
-                  href={project.demoUrl}
+                  href={project.datasetUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 font-mono text-xs text-primary transition-colors hover:underline"
                 >
-                  ↗ {project.demoLabel || "Live Demo on Hugging Face"}
+                  ↗ {project.datasetLabel || "Dataset"}
                 </a>
               </div>
             )}
@@ -74,12 +74,12 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
             )}
           </div>
           <div className="flex shrink-0 items-center gap-1.5">
-            {project.website && (
+            {project.datasetUrl && (
               <Link
-                href={project.website}
+                href={project.datasetUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Visit ${project.title}`}
+                aria-label={`Dataset for ${project.title}`}
                 className="rounded-md p-1 text-secondary transition-colors hover:text-foreground"
               >
                 <Globe className="size-5" />
@@ -99,13 +99,47 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           </div>
         </div>
 
-        <p className="mt-4 flex-1 text-base leading-relaxed text-secondary">
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-secondary sm:text-[14.5px]">
           {project.description}
         </p>
 
-        <div className="mt-6">
-          <p className="text-sm font-medium text-secondary">Technologies</p>
-          <div className="mt-3 flex items-end justify-between gap-3">
+        {project.methodology && project.methodology.length > 0 && (
+          <div className="mt-4 rounded-xl border border-border/50 bg-background/50 p-3.5">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Methodology
+            </p>
+            <ul className="mt-2 space-y-1.5 text-xs text-secondary">
+              {project.methodology.map((step) => (
+                <li key={step} className="flex items-start gap-2">
+                  <span className="mt-1.5 size-1 shrink-0 rounded-full bg-primary/70" />
+                  <span className="leading-relaxed">{step}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {project.modules && project.modules.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {project.modules.slice(0, 5).map((module) => (
+              <span
+                key={module}
+                className="rounded border border-border/60 bg-muted/40 px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground"
+              >
+                {module}
+              </span>
+            ))}
+            {project.modules.length > 5 && (
+              <span className="font-mono text-[10px] text-muted-foreground self-center">
+                +{project.modules.length - 5}
+              </span>
+            )}
+          </div>
+        )}
+
+        <div className="mt-5">
+          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Technologies</p>
+          <div className="mt-2.5 flex items-end justify-between gap-3">
             <div className="flex min-w-0 flex-wrap gap-2">
             {project.tech.map((tech) => {
               const icon = getTechIcon(tech);
@@ -134,13 +168,26 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
               );
             })}
             </div>
-            <Link
-              href={detailHref}
-              className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-secondary transition-colors hover:bg-muted hover:text-foreground"
-            >
-              View Details
-              <ArrowRight className="size-3.5" />
-            </Link>
+            <div className="flex shrink-0 items-center gap-2">
+              {project.href && (
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-secondary transition-colors hover:bg-muted hover:text-foreground"
+                >
+                  <GithubLogo className="size-3.5" />
+                  GitHub
+                </a>
+              )}
+              <Link
+                href={detailHref}
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-secondary transition-colors hover:bg-muted hover:text-foreground"
+              >
+                Details
+                <ArrowRight className="size-3" />
+              </Link>
+            </div>
           </div>
         </div>
 

@@ -49,7 +49,7 @@ export function Hero() {
           </div>
         </div>
 
-        <TimezoneWidget className="-mt-3 self-end" />
+        <TimezoneWidget className="relative z-40 -mt-3 self-end pointer-events-auto" />
 
         <div className="-mt-[calc(var(--grid-cell-size)*2)] flex items-end gap-4">
           <div className="relative z-30 shrink-0 rounded-full bg-background p-1">
@@ -69,11 +69,11 @@ export function Hero() {
             <RotatingTitle />
             <div className="mt-3 flex flex-wrap items-center gap-2">
               <Link
-                href={heroConfig.calendarUrl}
+                href="/resume"
                 className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-3.5 py-1.5 text-xs font-medium text-background transition-opacity hover:opacity-90 sm:text-sm"
               >
-                <Phone className="size-3.5 sm:size-4" weight="bold" />
-                Call me
+                <FileText className="size-3.5 sm:size-4" weight="bold" />
+                View Resume
               </Link>
               <Link
                 href={`mailto:${heroConfig.email}`}
@@ -81,6 +81,13 @@ export function Hero() {
               >
                 <EnvelopeSimple className="size-3.5 sm:size-4" weight="bold" />
                 Email me
+              </Link>
+              <Link
+                href={heroConfig.calendarUrl}
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-muted sm:text-sm"
+              >
+                <Phone className="size-3.5 sm:size-4" weight="bold" />
+                Call me
               </Link>
             </div>
         </div>

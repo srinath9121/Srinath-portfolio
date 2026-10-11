@@ -80,6 +80,17 @@ export default async function ProjectDetailPage({
         )}
         <p className="mt-3 text-secondary">{description}</p>
         <div className="mt-5 flex flex-wrap gap-2">
+          {project?.datasetUrl && (
+            <Link
+              href={project.datasetUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-1.5 text-sm transition-colors hover:bg-muted"
+            >
+              <Globe className="size-4" />
+              {project.datasetLabel || "Dataset"}
+            </Link>
+          )}
           {websiteHref && (
             <Link
               href={websiteHref}
