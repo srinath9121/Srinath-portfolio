@@ -8,13 +8,7 @@
 Personal portfolio of **M Srinath Swamy** — Data Science student focused on AI/ML engineering, research, and practical technical systems. Built with Next.js 15, TypeScript, Tailwind CSS v4, and MDX.
 
 ![Portfolio preview](./public/assets/portfolio-preview.png)
-
-🌐 **Live Site:** [srinath-portfolio-five.vercel.app](https://srinath-portfolio-five.vercel.app/)  
-🐙 **GitHub:** [@srinath9121](https://github.com/srinath9121)  
-💼 **LinkedIn:** [srinath-swamy](https://www.linkedin.com/in/srinath-swamy-b41a9b267)  
-🐦 **X (Twitter):** [@swamy_srin65891](https://x.com/swamy_srin65891)  
-🤗 **Hugging Face:** [@srinath44](https://huggingface.co/spaces/srinath44/solar-ramp-detector)  
-✉️ **Email:** [msrinath9700@gmail.com](mailto:msrinath9700@gmail.com)
+**Site:** [srinath-portfolio-five.vercel.app](https://srinath-portfolio-five.vercel.app/) · **GitHub:** [@srinath9121](https://github.com/srinath9121) · **Email:** [msrinath9700@gmail.com](mailto:msrinath9700@gmail.com)
 
 ---
 
