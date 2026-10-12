@@ -18,29 +18,6 @@ Personal portfolio of **M Srinath Swamy** — Data Science student focused on AI
 
 ---
 
-## 🔬 Featured Projects & Research
-
-- **[Solar PV Ramp Detection](https://github.com/srinath9121/solar-pv-ramp-detection)**  
-  Multimodal deep learning for early warning of severe solar power ramp events using fisheye sky-camera images and photovoltaic (PV) time series. Built with PyTorch, ResNet-18, LSTM, and deployed as an interactive demo on [Hugging Face Spaces](https://huggingface.co/spaces/srinath44/solar-ramp-detector) utilizing the [SKIPPD Dataset](https://huggingface.co/datasets/srikanthswamym/skippd).
-
-- **[Student Performance Prediction](https://github.com/srinath9121/Analysis-on-Student-grade-Prediction-using-ML)**  
-  End-to-end machine learning pipeline analyzing demographic, academic, and social variables to forecast student academic outcomes on the UCI Student Performance benchmark using XGBoost, Random Forest, and Neural Networks.
-
-- **[Airline Passenger Satisfaction Prediction](https://github.com/srinath9121/Analysis-on-Airline-Passenger-Satisfaction-Prediction-using-ML)**  
-  End-to-end ML model predicting customer satisfaction based on flight parameters, delay metrics, and service ratings, leveraging SMOTE class balancing and feature importance analysis.
-
-- **Indian Macro Terminal** *(In Development)*  
-  An institutional-grade macroeconomic and market intelligence workstation tailored for the Indian financial ecosystem — connecting macroeconomic indicators, RBI policy transmission, global risk, and anomaly detection.
-
----
-
-## 💼 Experience & Education
-
-- **UNP Education** — *Data Science & Machine Learning Intern* (June–October 2025)  
-  Worked on exploratory data analysis, data preprocessing, machine learning model development, and validation.
-- **Bhavan's Vivekananda College** — *Bachelor of Science Honours · Data Science*
-
----
 
 ## ✨ Features & Highlights
 
