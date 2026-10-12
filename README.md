@@ -13,7 +13,7 @@ Personal portfolio of **M Srinath Swamy** — Data Science student focused on AI
 🐙 **GitHub:** [@srinath9121](https://github.com/srinath9121)  
 💼 **LinkedIn:** [srinath-swamy](https://www.linkedin.com/in/srinath-swamy-b41a9b267)  
 🐦 **X (Twitter):** [@swamy_srin65891](https://x.com/swamy_srin65891)  
-🤗 **Hugging Face:** [@srinath44](https://huggingface.co/spaces/srinath44/solar-ramp-detector) / [@srikanthswamym](https://huggingface.co/datasets/srikanthswamym/skippd)  
+🤗 **Hugging Face:** [@srinath44](https://huggingface.co/spaces/srinath44/solar-ramp-detector)  
 ✉️ **Email:** [msrinath9700@gmail.com](mailto:msrinath9700@gmail.com)
 
 ---
