@@ -9,8 +9,8 @@ import {
   InstagramLogo,
   LinkedinLogo,
   MediumLogo,
-  Phone,
   SealCheck,
+  WhatsappLogo,
   XLogo,
 } from "@phosphor-icons/react";
 import { ProfileAvatar } from "@/components/profile-avatar";
@@ -83,11 +83,13 @@ export function Hero() {
                 Email me
               </Link>
               <Link
-                href={heroConfig.calendarUrl}
+                href={heroConfig.whatsappUrl || heroConfig.calendarUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-muted sm:text-sm"
               >
-                <Phone className="size-3.5 sm:size-4" weight="bold" />
-                Call me
+                <WhatsappLogo className="size-3.5 sm:size-4 text-emerald-500" weight="bold" />
+                WhatsApp Call
               </Link>
             </div>
         </div>

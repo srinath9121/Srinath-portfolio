@@ -3,7 +3,7 @@ export const resumeConfig = {
   description: "A quick look at my research, projects, and technical skills.",
   fileId: "",
   viewUrl: "/resume.pdf",
-  embedUrl: "/resume.pdf",
+  embedUrl: "",
   downloadUrl: "/resume.pdf",
 };
 

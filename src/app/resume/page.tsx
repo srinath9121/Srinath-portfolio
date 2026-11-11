@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { ArrowSquareOut, DownloadSimple } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/container";
-import { LiquidGlassCard } from "@/components/ui/liquid-glass";
-import { ResumeView } from "@/components/resume-view";
+import { ResumeContainer } from "./resume-container";
 import { heroConfig } from "@/config/hero";
 import { siteConfig } from "@/config/meta";
 import { resumeConfig } from "@/config/resume";
@@ -53,24 +52,10 @@ export default function ResumePage() {
       </Container>
 
       <Container>
-        <LiquidGlassCard
-          glowIntensity="sm"
-          shadowIntensity="md"
-          borderRadius="18px"
-          blurIntensity="md"
-          className="p-6 sm:p-10"
-        >
-          {resumeConfig.embedUrl ? (
-            <iframe
-              src={resumeConfig.embedUrl}
-              title={`${siteConfig.name} resume`}
-              className="aspect-[3/4] w-full min-h-[70vh] bg-muted sm:aspect-auto sm:min-h-[80vh]"
-              allow="autoplay"
-            />
-          ) : (
-            <ResumeView />
-          )}
-        </LiquidGlassCard>
+        <ResumeContainer
+          pdfUrl={hasExternalResume ? resumeConfig.viewUrl : undefined}
+          name={siteConfig.name}
+        />
       </Container>
     </div>
   );
