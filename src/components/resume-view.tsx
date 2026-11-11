@@ -6,7 +6,6 @@ import {
   EnvelopeSimple,
   GithubLogo,
   LinkedinLogo,
-  Printer,
   WhatsappLogo,
 } from "@phosphor-icons/react";
 import { heroConfig } from "@/config/hero";
@@ -14,39 +13,14 @@ import { education, skillCategories, certifications } from "@/config/education";
 import { projects } from "@/config/projects";
 
 export function ResumeView() {
-  const handlePrint = () => {
-    if (typeof window !== "undefined") {
-      window.print();
-    }
-  };
-
   return (
     <div className="flex flex-col gap-6">
       {/* Top action bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/60 pb-4 print:hidden">
-        <div className="flex items-center gap-2">
-          <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs font-medium text-muted-foreground">
-            Curriculum Vitae · Updated 2026
-          </span>
-        </div>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={handlePrint}
-            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-muted"
-          >
-            <Printer className="size-3.5" />
-            Print / Save PDF
-          </button>
-          <a
-            href={`mailto:${heroConfig.email}`}
-            className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-3.5 py-1.5 text-xs font-medium text-background transition-opacity hover:opacity-90"
-          >
-            <EnvelopeSimple className="size-3.5" />
-            Request Full Dossier
-          </a>
-        </div>
+      <div className="flex items-center gap-2 border-b border-border/60 pb-4 print:hidden">
+        <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+        <span className="text-xs font-medium text-muted-foreground">
+          Curriculum Vitae · Updated 2026
+        </span>
       </div>
 
       {/* Main CV Content */}
